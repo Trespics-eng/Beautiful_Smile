@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌹 A Beautiful Lady with a Beautiful Smile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 30%, #1f0b1a, #0b030a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Floating hearts background */
+    .heart-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .heart-float {
+      position: absolute;
+      color: rgba(255, 180, 200, 0.25);
+      font-size: 1.8rem;
+      animation: floatHeart 12s infinite ease-in-out;
+      user-select: none;
+      filter: drop-shadow(0 0 6px #ff8a9f);
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.8);
+        opacity: 0.2;
+      }
+      20% {
+        opacity: 0.5;
+      }
+      80% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Main card */
+    .poem-card {
+      position: relative;
+      z-index: 10;
+      max-width: 820px;
+      width: 100%;
+      background: rgba(20, 5, 15, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 4rem 1.5rem 4rem 1.5rem;
+      padding: 3.5rem 2.5rem;
+      box-shadow: 
+        0 30px 50px rgba(0, 0, 0, 0.7),
+        0 0 0 2px rgba(255, 200, 220, 0.15) inset,
+        0 0 40px rgba(255, 120, 160, 0.3);
+      border: 1px solid rgba(255, 210, 230, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.4s ease;
+      animation: cardGlow 6s infinite alternate;
+    }
+
+    .poem-card:hover {
+      transform: scale(1.005);
+      box-shadow: 
+        0 35px 60px rgba(0, 0, 0, 0.8),
+        0 0 0 2px rgba(255, 220, 240, 0.3) inset,
+        0 0 70px rgba(255, 140, 180, 0.5);
+    }
+
+    @keyframes cardGlow {
+      0% {
+        box-shadow: 
+          0 30px 50px rgba(0, 0, 0, 0.7),
+          0 0 0 2px rgba(255, 200, 220, 0.1) inset,
+          0 0 40px rgba(255, 120, 160, 0.2);
+      }
+      100% {
+        box-shadow: 
+          0 30px 50px rgba(0, 0, 0, 0.7),
+          0 0 0 2px rgba(255, 210, 235, 0.25) inset,
+          0 0 80px rgba(255, 150, 190, 0.5);
+      }
+    }
+
+    /* Title with rose */
+    .title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      color: #ffd9e6;
+      text-shadow: 0 0 15px #ff4d6d, 0 0 30px #b3002d;
+      font-weight: 400;
+      word-spacing: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 20;
+    }
+
+    .title .rose-icon {
+      font-size: 3rem;
+      filter: drop-shadow(0 0 12px #ff3355);
+      animation: pulseRose 2.2s infinite;
+      display: inline-block;
+      transform-origin: center;
+      cursor: pointer;
+    }
+
+    @keyframes pulseRose {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); text-shadow: 0 0 25px #ff99aa; }
+      100% { transform: scale(1); }
+    }
+
+    /* Poem text */
+    .poem {
+      color: #ffeef4;
+      font-size: 1.3rem;
+      line-height: 2.2rem;
+      text-align: center;
+      white-space: pre-line;
+      font-style: italic;
+      text-shadow: 0 2px 10px rgba(255, 80, 120, 0.5);
+      padding: 0.8rem 0.5rem;
+      letter-spacing: 0.3px;
+      background: linear-gradient(145deg, #fff0f5, #ffd9e8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 400;
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 15;
+    }
+
+    .poem {
+      background: linear-gradient(135deg, #fff5f9, #ffcddc, #ffe2ec);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 18px rgba(255, 120, 160, 0.7);
+      filter: drop-shadow(0 4px 6px #2a0010);
+    }
+
+    /* Interactive signature / bottom */
+    .interactive-footer {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 0.8rem;
+      position: relative;
+      z-index: 25;
+    }
+
+    .smile-button {
+      background: transparent;
+      border: 2px solid rgba(255, 160, 190, 0.8);
+      color: #ffdae7;
+      font-size: 1.2rem;
+      padding: 0.75rem 2.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      letter-spacing: 1.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 80, 120, 0.3);
+      backdrop-filter: blur(5px);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .smile-button:hover {
+      background: rgba(255, 180, 200, 0.2);
+      border-color: #ffb3c6;
+      box-shadow: 0 0 40px #ff4d6d, 0 0 20px #ff99aa inset;
+      color: #fff0f5;
+      transform: scale(1.03);
+    }
+
+    .smile-button:active {
+      transform: scale(0.98);
+    }
+
+    .smile-button span {
+      font-size: 1.5rem;
+    }
+
+    .message-bubble {
+      min-height: 2.5rem;
+      font-size: 1.1rem;
+      color: #ffdae7;
+      text-align: center;
+      transition: opacity 0.4s;
+      font-style: italic;
+      text-shadow: 0 0 10px #ff4d6d;
+      padding: 0.3rem 1rem;
+      opacity: 0.9;
+    }
+
+    /* ====== NEW: floating emoji shower (from bottom to top) ====== */
+    .shower-emoji {
+      position: fixed;
+      bottom: -50px;               /* start below screen */
+      font-size: 2.2rem;
+      z-index: 1000;               /* above everything */
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 0 12px #ff99bb);
+      animation: floatUp 3.8s ease-out forwards;
+      opacity: 0.95;
+      will-change: transform, opacity;
+      transform: translateY(0) scale(1);
+      line-height: 1;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.7) rotate(0deg);
+      }
+      10% {
+        opacity: 1;
+        transform: translateY(-5vh) scale(1) rotate(4deg);
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-110vh) scale(1.3) rotate(-8deg);
+      }
+    }
+
+    /* subtle sparkle word effect, kept for double-click / rose */
+    .glow-word {
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      font-size: 1.3rem;
+      color: #ffc0d0;
+      text-shadow: 0 0 15px #ff3366, 0 0 40px #ff0040;
+      animation: fadeWord 1.2s forwards;
+      white-space: nowrap;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      font-weight: 500;
+    }
+
+    @keyframes fadeWord {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(1.8);
+      }
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      .poem-card {
+        padding: 2.5rem 1.5rem;
+        border-radius: 2rem 1rem 2rem 1rem;
+      }
+      .title {
+        font-size: 1.7rem;
+      }
+      .title .rose-icon {
+        font-size: 2.2rem;
+      }
+      .poem {
+        font-size: 1.1rem;
+        line-height: 1.9rem;
+      }
+      .smile-button {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+      }
+      .shower-emoji {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .poem-card {
+        padding: 2rem 1rem;
+      }
+      .title {
+        font-size: 1.4rem;
+      }
+      .poem {
+        font-size: 1rem;
+        line-height: 1.7rem;
+      }
+      .shower-emoji {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating hearts background -->
+  <div class="heart-bg" id="heartBg"></div>
+
+  <!-- main poem card -->
+  <div class="poem-card" id="poemCard">
+    <div class="title">
+      <span class="rose-icon">🌹</span>
+      A Beautiful Lady with a Beautiful Smile
+      <span class="rose-icon">🌹</span>
+    </div>
+
+    <div class="poem" id="poemText">
+      Your smile is brighter than the morning sun,
+      A beautiful sight that outshines everyone.
+      Your eyes hold magic, your laughter brings light,
+      Like stars in the heavens on a beautiful night.
+      Your beauty is more than what the eyes can see,
+      It's the warmth in your heart and the joy you bring me.
+      Oh, beautiful lady, with a smile so divine,
+      If beauty were poetry, you'd be every line. ❤️
+    </div>
+
+    <div class="interactive-footer">
+      <audio class="poem-audio" controls preload="metadata" aria-label="If Beauty Were Poetry">
+        <source src="If_Beauty_Were_Poetry.mp3" type="audio/mpeg">
+        Your browser does not support audio playback.
+      </audio>
+
+      <button class="smile-button" id="smileBtn">
+        <span>✨</span> Send a smile <span>✨</span>
+      </button>
+      <div class="message-bubble" id="messageBubble">your smile lights up the stars ✨</div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Create floating hearts in background
+      const heartBg = document.getElementById('heartBg');
+      const heartSymbols = ['❤️', '🌹', '💖', '💗', '💓', '🌸', '✨', '💕', '🩷', '🌺'];
+      
+      for (let i = 0; i < 32; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-float');
+        heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        const size = Math.random() * 1.4 + 1.2;
+        const left = Math.random() * 100;
+        const duration = Math.random() * 10 + 8;
+        const delay = Math.random() * 12;
+        const opacity = Math.random() * 0.4 + 0.2;
+        
+        heart.style.fontSize = size + 'rem';
+        heart.style.left = left + '%';
+        heart.style.animationDuration = duration + 's';
+        heart.style.animationDelay = delay + 's';
+        heart.style.opacity = opacity;
+        heart.style.position = 'absolute';
+        heartBg.appendChild(heart);
+      }
+
+      // ========== SMILE BUTTON – EMOJI SHOWER (bottom → top) ==========
+      const smileBtn = document.getElementById('smileBtn');
+      const messageBubble = document.getElementById('messageBubble');
+
+      // Emojis specifically: hearts, lady smiling, flowers
+      const showerEmojis = ['❤️', '💖', '💗', '💓', '💕', '🌹', '🌸', '🌺', '🌷', '💐', '😊', '😍', '🥰', '😁', '👩', '💃', '🌼', '✨'];
+
+      // Function to launch a shower of emojis from bottom to top
+      function launchEmojiShower() {
+        const count = 48; // generous amount for a beautiful effect
+        for (let i = 0; i < count; i++) {
+          // create emoji element
+          const emoji = document.createElement('div');
+          emoji.classList.add('shower-emoji');
+
+          // pick a random emoji from our curated list
+          const randomEmoji = showerEmojis[Math.floor(Math.random() * showerEmojis.length)];
+          emoji.textContent = randomEmoji;
+
+          // random horizontal position (5% to 95% of viewport width)
+          const leftPos = Math.random() * 90 + 5; // 5% – 95%
+          emoji.style.left = leftPos + 'vw';
+
+          // random size (1.8rem – 3.2rem) for variety
+          const size = Math.random() * 1.4 + 1.8;
+          emoji.style.fontSize = size + 'rem';
+
+          // random animation duration (3.2s – 5.2s) and delay (0 – 1.2s)
+          const duration = Math.random() * 2.0 + 3.2; // 3.2 – 5.2s
+          const delay = Math.random() * 1.2; // 0 – 1.2s
+          emoji.style.animationDuration = duration + 's';
+          emoji.style.animationDelay = delay + 's';
+
+          // slight random rotation and opacity variation
+          emoji.style.setProperty('--rotation', (Math.random() * 20 - 10) + 'deg');
+          emoji.style.opacity = Math.random() * 0.4 + 0.8;
+
+          // random horizontal drift using custom property? We'll handle via keyframes only (simple up)
+          // but we can add a tiny horizontal drift by translating X slightly in keyframes? 
+          // we'll keep the keyframes but add a subtle sway via inline animation? Not necessary.
+          
+          // optional: change filter hue for fun
+          // emoji.style.filter = `hue-rotate(${Math.random() * 40 - 20}deg) drop-shadow(0 0 12px #ff99bb)`;
+
+          document.body.appendChild(emoji);
+
+          // remove after animation ends (duration + delay + buffer)
+          const totalTime = (duration + delay) * 1000 + 200;
+          setTimeout(() => {
+            emoji.remove();
+          }, totalTime);
+        }
+      }
+
+      // Also change message bubble with a compliment
+      const compliments = [
+        "you make the whole world smile 🌍💖",
+        "your smile is pure magic ✨",
+        "you're a poem come to life 📜",
+        "your eyes hold galaxies 🌌",
+        "you're more beautiful than words can say 🌹",
+        "that smile — absolutely divine 😊",
+        "you light up every room 💡",
+        "beauty, grace, and kindness 🌸",
+        "the stars are jealous of your sparkle ✨",
+        "you're every line of a love poem ❤️",
+        "you make my heart smile 💗",
+        "a beautiful lady with a beautiful soul 🕊️",
+        "your laughter is my favorite melody 🎵",
+        "you're a dream in human form 🌙",
+        "simply breathtaking 🌺"
+      ];
+
+      smileBtn.addEventListener('click', function(e) {
+        // launch the emoji shower from bottom to top
+        launchEmojiShower();
+
+        // change the message bubble to a random compliment
+        const randomIndex = Math.floor(Math.random() * compliments.length);
+        messageBubble.textContent = compliments[randomIndex];
+
+        // Optional: also add a small burst of glow words near the button
+        const rect = smileBtn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // tiny hearts at button position (keep from original, but fine)
+        for (let i = 0; i < 4; i++) {
+          const tinyHeart = document.createElement('div');
+          tinyHeart.classList.add('glow-word');
+          tinyHeart.textContent = ['💖', '✨', '🌸', '❤️'][Math.floor(Math.random() * 4)];
+          tinyHeart.style.fontSize = '1.8rem';
+          tinyHeart.style.left = (centerX + (Math.random() - 0.5) * 100) + 'px';
+          tinyHeart.style.top = (centerY + (Math.random() - 0.5) * 40) + 'px';
+          tinyHeart.style.animationDuration = '1.2s';
+          document.body.appendChild(tinyHeart);
+          setTimeout(() => tinyHeart.remove(), 1300);
+        }
+      });
+
+      // Double click on poem card for extra hearts
+      const poemCard = document.getElementById('poemCard');
+      poemCard.addEventListener('dblclick', function(e) {
+        for (let i = 0; i < 8; i++) {
+          const heartBurst = document.createElement('div');
+          heartBurst.classList.add('glow-word');
+          heartBurst.textContent = ['❤️', '🌹', '💖', '✨', '💕'][Math.floor(Math.random() * 5)];
+          heartBurst.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+          const x = e.clientX + (Math.random() - 0.5) * 150;
+          const y = e.clientY + (Math.random() - 0.5) * 100;
+          heartBurst.style.left = x + 'px';
+          heartBurst.style.top = y + 'px';
+          heartBurst.style.animationDuration = '1.2s';
+          document.body.appendChild(heartBurst);
+          setTimeout(() => heartBurst.remove(), 1300);
+        }
+      });
+
+      // Rose icons interactive
+      const roseIcons = document.querySelectorAll('.rose-icon');
+      roseIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+          e.stopPropagation();
+          for (let i = 0; i < 5; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('glow-word');
+            petal.textContent = ['🌹', '❤️', '✨', '🌸'][i % 4];
+            petal.style.fontSize = '2rem';
+            const rect = icon.getBoundingClientRect();
+            petal.style.left = (rect.left + rect.width/2 + (Math.random() - 0.5) * 60) + 'px';
+            petal.style.top = (rect.top + rect.height/2 + (Math.random() - 0.5) * 30) + 'px';
+            petal.style.animationDuration = '1s';
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 1100);
+          }
+        });
+      });
+
+      // Set initial random message on load
+      window.addEventListener('load', function() {
+        const randomIndex = Math.floor(Math.random() * compliments.length);
+        messageBubble.textContent = compliments[randomIndex];
+      });
+    })();
+  </script>
+
+  <!-- additional style to ensure gradient text is visible -->
+  <style>
+    .poem {
+      background: linear-gradient(135deg, #fff5f9, #ffcddc, #ffe2ec);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #ffeef4;
+    }
+    @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+      .poem {
+        -webkit-text-fill-color: #ffeef4;
+        background: transparent;
+        color: #ffeef4;
+      }
+    }
+  </style>
+</body>
+</html>
